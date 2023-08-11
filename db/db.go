@@ -13,7 +13,7 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-	login := os.Getenv("QOVERY_POSTGRESQL_")
+	login := os.Getenv("DB_LOGIN")
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
