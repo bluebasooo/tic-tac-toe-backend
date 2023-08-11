@@ -1,0 +1,7 @@
+/postgres-data
+/main
+/config
+/.gitignore
+/docker-compose
+/Makefile
+

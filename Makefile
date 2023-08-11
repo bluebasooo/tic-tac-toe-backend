@@ -2,7 +2,7 @@ build:
 		go build -v ./cmd/main.go
 
 run:
-		./main
+		./main -LOGIN=postgres, -PASSWORD=123, -HOST=localhost, -PORT=5432, -DB_NAME=postgres
 
 docker:
 		docker-compose up -d
@@ -17,3 +17,4 @@ migrate:
 
 
 .DEFAULT_GOAL := build
+

@@ -1,8 +1,8 @@
 FROM golang:latest as build
-WORKDIR /build
-COPY . /build
+WORKDIR /home/
+COPY . .
 RUN go build ./cmd/main.go
 
-FROM alpine:latest as prod
-COPY --from=build /build .
+FROM ubuntu:22.04 as production
+COPY --from=build /home/main .
 CMD ["./main"]

@@ -2,6 +2,9 @@ package db
 
 import (
 	"database/sql"
+	"fmt"
+	"os"
+
 	_ "github.com/lib/pq"
 )
 
@@ -10,7 +13,13 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-	db, err := sql.Open("postgres", "postgresql://postgres:123@localhost:5432/postgres?sslmode=disable")
+	login := os.Getenv("QOVERY_POSTGRESQL_")
+	password := os.Getenv("DB_PASSWORD")
+	host := os.Getenv("DB_HOST")
+	port := os.Getenv("DB_PORT")
+	dbName := os.Getenv("DB_NAME")
+
+	db, err := sql.Open("postgres", fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", login, password, host, port, dbName))
 	if err != nil {
 		return nil, err
 	}

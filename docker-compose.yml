@@ -1,9 +1,17 @@
 version: "3.5"
 
 services:
+  backend:
+    image: tic-tac-toe:latest
+    build: .
+    container_name: app
+    ports:
+      - 8080:8080
+    env_file:
+      - docker.env
   postgres:
     image: postgres:15.3-alpine3.18
-    container_name: tic-tac-toe_postgress
+    container_name: db
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123
