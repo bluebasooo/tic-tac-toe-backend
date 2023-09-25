@@ -16,6 +16,10 @@ func NewHandler(s Service) *Handler {
 	}
 }
 
+func (h *Handler) OkEnd(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"status": "OK"})
+}
+
 func (h *Handler) CreateUser(c *gin.Context) {
 	var u CreateUserReq
 	if err := c.ShouldBindJSON(&u); err != nil {
